@@ -133,7 +133,8 @@ object ReadlnAndScanner {
     // Example 9: Using enhancedReadln with custom validation via lambda (email format)
     fun runExample9() {
         val email = enhancedReadln("Example 9: Enter your email:") {
-            val emailRegex = Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")
+            // triple quotes """ avoids the need for escaping backslashes
+            val emailRegex = Regex("""^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$""")
             emailRegex.matches(it)
         }
         println("Valid email: $email")
