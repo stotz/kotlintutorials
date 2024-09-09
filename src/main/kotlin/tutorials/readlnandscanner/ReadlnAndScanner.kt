@@ -1,5 +1,7 @@
 package ch.typedef.tutorials.readlnandscanner
 
+import java.math.BigDecimal
+import java.math.BigInteger
 import java.util.Scanner
 
 object ReadlnAndScanner {
@@ -42,6 +44,7 @@ object ReadlnAndScanner {
     // Example 1: Nullable input handling with readlnOrNull() and forcing non-null with !!
     fun runExample1() {
         try {
+            Boolean
             println("Example 1: Enter a nullable string:")
             val nullableInput: String? = readlnOrNull()
             val nonNullInput: String = nullableInput!!

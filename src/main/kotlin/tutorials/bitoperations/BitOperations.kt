@@ -1,5 +1,26 @@
 package ch.typedef.tutorials.bitoperations
 
+fun <T> toBinaryString(value: T): String {
+    return when (value) {
+        is Byte -> value.toString(2).padStart(8, '0')
+        is Short -> value.toString(2).padStart(16, '0')
+        is Int -> value.toString(2).padStart(32, '0')
+        is Long -> value.toString(2).padStart(64, '0')
+        is Float -> {
+            val bits = java.lang.Float.floatToIntBits(value)
+            bits.toString(2).padStart(32, '0')
+        }
+        is Double -> {
+            val bits = java.lang.Double.doubleToLongBits(value)
+            bits.toString(2).padStart(64, '0')
+        }
+        is Boolean -> if (value) "1" else "0"
+        is Char -> value.code.toString(2).padStart(16, '0') // Unicode value of Char
+        is String -> value.map { it.code.toString(2).padStart(16, '0') }.joinToString(" ") // Binary of each character
+        else -> throw IllegalArgumentException("Unsupported type")
+    }
+}
+
 object BitOperations {
     @JvmStatic
     fun main(args: Array<String>) {
@@ -49,5 +70,25 @@ object BitOperations {
         // Example 11: Toggling a bit with XOR
         val toggleBit = a xor mask
         println("Toggling 3rd bit in a: $toggleBit (Binary: ${toggleBit.toString(2)})")
+
+        val byteValue: Byte = 5
+        val shortValue: Short = 123
+        val intValue: Int = 123456
+        val longValue: Long = 123456789L
+        val floatValue: Float = 12.34f
+        val doubleValue: Double = 12.34
+        val booleanValue: Boolean = true
+        val charValue: Char = 'A'
+        val stringValue: String = "Hi"
+
+        println("Byte (5): ${toBinaryString(byteValue)}")
+        println("Short (123): ${toBinaryString(shortValue)}")
+        println("Int (123456): ${toBinaryString(intValue)}")
+        println("Long (123456789): ${toBinaryString(longValue)}")
+        println("Float (12.34): ${toBinaryString(floatValue)}")
+        println("Double (12.34): ${toBinaryString(doubleValue)}")
+        println("Boolean (true): ${toBinaryString(booleanValue)}")
+        println("Char ('☺'): ${toBinaryString(charValue)}")
+        println("String ('Hi ☺'): ${toBinaryString(stringValue)}")
     }
 }
