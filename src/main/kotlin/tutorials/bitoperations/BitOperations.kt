@@ -25,32 +25,6 @@ fun <T> toBinaryString(value: T): String {
     }
 }
 
-
-fun toBinaryString(value: Any): String {
-    return when (value) {
-        is Byte -> Integer.toBinaryString(value.toInt())
-        is Short -> Integer.toBinaryString(value.toInt())
-        is Int -> Integer.toBinaryString(value)
-        is Long -> java.lang.Long.toBinaryString(value)
-        is Float -> {
-            val bits = java.lang.Float.floatToIntBits(value)
-            bits.toString(2).padStart(32, '0')
-        }
-        is Double -> {
-            val bits = java.lang.Double.doubleToLongBits(value)
-            bits.toString(2).padStart(64, '0')
-        }
-        is UByte -> Integer.toBinaryString(value.toInt())
-        is UShort -> Integer.toBinaryString(value.toInt())
-        is UInt -> Integer.toBinaryString(value.toInt())
-        is ULong -> java.lang.Long.toBinaryString(value.toLong())
-        is Boolean -> if (value) "1" else "0"
-        is Char -> Integer.toBinaryString(value.code)
-        is String -> value.toCharArray().joinToString(" ") { toBinaryString(it) }
-        else -> throw IllegalArgumentException("Unsupported type")
-    }
-}
-
 object BitOperations {
     @JvmStatic
     fun main(args: Array<String>) {
