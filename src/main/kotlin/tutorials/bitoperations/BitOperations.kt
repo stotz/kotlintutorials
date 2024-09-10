@@ -2,24 +2,24 @@ package ch.typedef.tutorials.bitoperations
 
 fun <T> toBinaryString(value: T): String {
     return when (value) {
-        is Byte -> value.toString(2).padStart(8, '0')
-        is UByte -> value.toString(2).padStart(8, '0')
-        is Short -> value.toString(2).padStart(16, '0')
-        is UShort -> value.toString(2).padStart(16, '0')
-        is Int -> value.toString(2).padStart(32, '0')
-        is UInt -> value.toString(2).padStart(32, '0')
-        is Long -> value.toString(2).padStart(64, '0')
-        is ULong -> value.toString(2).padStart(64, '0')
+        is Byte -> value.toString(2).padStart(Byte.SIZE_BITS, '0')
+        is UByte -> value.toString(2).padStart(UByte.SIZE_BITS, '0')
+        is Short -> value.toString(2).padStart(Short.SIZE_BITS, '0')
+        is UShort -> value.toString(2).padStart(UShort.SIZE_BITS, '0')
+        is Int -> value.toString(2).padStart(Int.SIZE_BITS, '0')
+        is UInt -> value.toString(2).padStart(UInt.SIZE_BITS, '0')
+        is Long -> value.toString(2).padStart(Long.SIZE_BITS, '0')
+        is ULong -> value.toString(2).padStart(ULong.SIZE_BITS, '0')
         is Float -> {
             val bits = java.lang.Float.floatToIntBits(value)
-            bits.toString(2).padStart(32, '0')
+            bits.toString(2).padStart(Float.SIZE_BITS, '0')
         }
         is Double -> {
             val bits = java.lang.Double.doubleToLongBits(value)
-            bits.toString(2).padStart(64, '0')
+            bits.toString(2).padStart(Double.SIZE_BITS, '0')
         }
         is Boolean -> if (value) "1" else "0"
-        is Char -> value.code.toString(2).padStart(16, '0') // Unicode value of Char
+        is Char -> value.code.toString(2).padStart(Char.SIZE_BITS, '0') // Unicode value of Char
         is String -> value.map { it.code.toString(2).padStart(16, '0') }.joinToString(" ") // Binary of each character
         else -> throw IllegalArgumentException("Unsupported type")
     }
