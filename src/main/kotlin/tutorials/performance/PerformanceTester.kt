@@ -1,24 +1,24 @@
 package ch.typedef.tutorials.performance
 
 import java.util.concurrent.atomic.AtomicLong
-import kotlin.concurrent.thread
 
 class PerformanceTester {
-    private var totalCalls = AtomicLong(0) // Change to AtomicLong
+    private var totalCalls = AtomicLong(0)
     private var totalTimeMillis = 0L
 
     fun testByCalls(calls: Long, testLambda: () -> Unit): PerformanceResult {
+        reset()
         val startTime = System.currentTimeMillis()
         repeat(calls.toInt()) {
             testLambda()
             totalCalls.incrementAndGet()
         }
-        val endTime = System.currentTimeMillis()
-        totalTimeMillis = endTime - startTime
+        totalTimeMillis = System.currentTimeMillis() - startTime
         return getResult()
     }
 
     fun testByTime(maxTimeMillis: Long, testLambda: () -> Unit): PerformanceResult {
+        reset()
         val startTime = System.currentTimeMillis()
         var currentTime = startTime
         while (currentTime - startTime < maxTimeMillis) {
@@ -28,6 +28,11 @@ class PerformanceTester {
         }
         totalTimeMillis = currentTime - startTime
         return getResult()
+    }
+
+    private fun reset() {
+        totalCalls.set(0) // Reset totalCalls
+        totalTimeMillis = 0L // Reset totalTimeMillis
     }
 
     private fun getResult(): PerformanceResult {
