@@ -10,6 +10,9 @@ repositories {
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
+
     testImplementation(kotlin("test"))
 }
 

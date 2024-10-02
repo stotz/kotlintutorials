@@ -45,9 +45,10 @@ class PerformanceTester {
 
 fun main() {
     val tester = PerformanceTester()
+    System.identityHashCode(tester)
 
     // Test with number of calls
-    val resultByCalls = tester.testByCalls(10000) {
+    val resultByCalls = tester.testByCalls(1_000) {
         // Your test code here
         for (i in 1..1000) {
             Math.sqrt(i.toDouble())
@@ -64,23 +65,22 @@ fun main() {
     }
     println("By Time -> Total Calls: ${resultByTime.calls}, Time: ${resultByTime.millis}ms, Calls/ms: ${resultByTime.callsPerMillis}")
 
-    repeat(10) {
-        val resultByTimeLong = tester.testByTime(10_000) {
-            // Your test code here
-            var longValue: Long = 0L
-            for (i in 1..1000) {
-                ++longValue
-            }
-        }
-        println("Long by Time  -> Total Calls: ${resultByTimeLong.calls}, Time: ${resultByTimeLong.millis}ms, Calls/ms: ${resultByTimeLong.callsPerMillis}")
 
-        val resultByTimeULong = tester.testByTime(10_000) {
-            // Your test code here
-            var longValue: ULong = 0UL
-            for (i in 1..1000) {
-                ++longValue
-            }
+    val resultByTimeLong = tester.testByTime(1_000) {
+        // Your test code here
+        var longValue: Long = 0L
+        for (i in 1..1000) {
+            ++longValue
         }
-        println("ULong by Time -> Total Calls: ${resultByTimeULong.calls}, Time: ${resultByTimeULong.millis}ms, Calls/ms: ${resultByTimeULong.callsPerMillis}")
     }
-}
+    println("Long by Time  -> Total Calls: ${resultByTimeLong.calls}, Time: ${resultByTimeLong.millis}ms, Calls/ms: ${resultByTimeLong.callsPerMillis}")
+
+    val resultByTimeULong = tester.testByTime(1_000) {
+        // Your test code here
+        var longValue: ULong = 0UL
+        for (i in 1..1000) {
+            ++longValue
+        }
+    }
+    println("ULong by Time -> Total Calls: ${resultByTimeULong.calls}, Time: ${resultByTimeULong.millis}ms, Calls/ms: ${resultByTimeULong.callsPerMillis}")
+ }
