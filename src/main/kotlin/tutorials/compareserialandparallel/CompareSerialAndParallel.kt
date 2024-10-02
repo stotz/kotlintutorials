@@ -7,7 +7,7 @@ import kotlinx.coroutines.*
  * Constant representing the time unit for the performance comparison.
  * Possible values are "ns" (nanoseconds), "µs" (microseconds), and "ms" (milliseconds).
  */
-const val TIME_UNIT = "ms" // Change this to "ns", "µs", or "ms" for different time units
+const val TIME_UNIT = "µs" // Change this to "ns", "µs", or "ms" for different time units
 
 /**
  * Converts the given time in nanoseconds to the desired time unit.
@@ -120,7 +120,7 @@ fun runThreadProcessing(nanoDelay: Long): Long {
  */
 fun main() = runBlocking {
     var nanoDelay = 0L
-    val stepIncrement = 1_000_000L
+    val stepIncrement = 10_000L
     val threshold = 500_000_000L // 500 ms as a threshold example
 
     // Warm-up to stabilize the JVM
