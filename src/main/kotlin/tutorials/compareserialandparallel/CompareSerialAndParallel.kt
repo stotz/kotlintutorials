@@ -1,3 +1,5 @@
+package tutorials.compareserialandparallel
+
 import java.util.concurrent.Executors
 import java.util.concurrent.CountDownLatch
 import kotlin.system.measureNanoTime
