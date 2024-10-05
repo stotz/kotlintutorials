@@ -37,6 +37,26 @@ class FileUtilsTest {
     }
 
     /**
+     * Test to verify the functionality of reading a Big5 encoded text file.
+     * This test ensures that the file encoded in Big5 (Traditional Chinese) is read correctly.
+     *
+     * Files being tested:
+     * - Big5 encoded file (testfile_big5_traditionell_windows.txt)
+     *
+     * Assertions:
+     * - The file should contain the expected Traditional Chinese text.
+     */
+    @Test
+    fun testReadBig5File() {
+        // Reading a file encoded in Big5 (Traditional Chinese for Windows)
+        val big5Content = FileUtils.readEntireTextFile("testfile_big5_traditionell_windows.txt", Charset.forName("Big5"), classLoader)
+        assertTrue(big5Content.contains("更高的生活"))
+
+        // Debug output
+        println("Big5 file content: $big5Content")
+    }
+
+    /**
      * Test to verify the file encoding conversion functionality between UTF-8 and Windows-1252.
      * This test converts a file encoded in UTF-8 to Windows-1252 and then back to UTF-8, ensuring that
      * the content remains intact after the round-trip conversion.
@@ -140,5 +160,119 @@ class FileUtilsTest {
         // Detect encoding of a file in UTF-8 (without BOM)
         val utf8UnixNoBomEncoding = FileUtils.detectFileEncoding("testfile_utf8_unix_no_bom.txt", classLoader)
         assertEquals("UTF-8", utf8UnixNoBomEncoding)
+    }
+
+    /**
+     * Tests detecting the encoding of a UTF-16 BE file with BOM.
+     */
+    @Test
+    fun testDetectFileEncodingUtf16BeBom() {
+        val utf16BeBomEncoding = FileUtils.detectFileEncoding("src/test/resources/testfile_utf16_be_bom.txt", classLoader)
+        println("Detected encoding for UTF-16 BE with BOM: $utf16BeBomEncoding")
+        assertEquals("UTF-16BE", utf16BeBomEncoding)
+    }
+
+    /**
+     * Tests detecting the encoding of a UTF-16 BE file without BOM.
+     */
+    @Test
+    fun testDetectFileEncodingUtf16BeNoBom() {
+        val utf16BeNoBomEncoding = FileUtils.detectFileEncoding("src/test/resources/testfile_utf16_be_no_bom.txt", classLoader)
+        println("Detected encoding for UTF-16 BE without BOM: $utf16BeNoBomEncoding")
+        assertTrue(utf16BeNoBomEncoding.equals("UTF-16BE") || utf16BeNoBomEncoding.equals("WINDOWS-1252"))
+    }
+
+    /**
+     * Tests detecting the encoding of a UTF-16 LE file with BOM.
+     */
+    @Test
+    fun testDetectFileEncodingUtf16LeBom() {
+        val utf16LeBomEncoding = FileUtils.detectFileEncoding("src/test/resources/testfile_utf16_le_bom.txt", classLoader)
+        assertEquals("UTF-16LE", utf16LeBomEncoding)
+    }
+
+    /**
+     * Tests detecting the encoding of a UTF-16 LE file without BOM.
+     */
+    @Test
+    fun testDetectFileEncodingUtf16LeNoBom() {
+        val utf16LeNoBomEncoding = FileUtils.detectFileEncoding("src/test/resources/testfile_utf16_le_no_bom.txt", classLoader)
+        assertTrue(utf16LeNoBomEncoding == "UTF-16LE" || utf16LeNoBomEncoding == "WINDOWS-1252")
+    }
+
+    /**
+     * Tests detecting the encoding of a Windows-1252 file.
+     */
+    @Test
+    fun testDetectFileEncodingWindows1252() {
+        val windows1252Encoding = FileUtils.detectFileEncoding("src/test/resources/testfile_windows-1252.txt", classLoader)
+        assertEquals("WINDOWS-1252", windows1252Encoding)
+    }
+
+    /**
+     * Tests detecting the encoding of a Big5 encoded file (Traditional Chinese).
+     */
+    @Test
+    fun testDetectFileEncodingBig5() {
+        val big5Encoding = FileUtils.detectFileEncoding("src/test/resources/testfile_big5_traditionell_windows.txt", classLoader)
+        assertEquals("BIG5", big5Encoding)
+    }
+
+    /**
+     * Tests detecting the encoding of a UTF-8 file with BOM (Mac).
+     */
+    @Test
+    fun testDetectFileEncodingUtf8MacBom() {
+        val utf8MacBomEncoding = FileUtils.detectFileEncoding("src/test/resources/testfile_utf8_mac_bom.txt", classLoader)
+        assertEquals("UTF-8", utf8MacBomEncoding)
+    }
+
+    /**
+     * Tests detecting the encoding of a UTF-8 file without BOM (Mac).
+     */
+    @Test
+    fun testDetectFileEncodingUtf8MacNoBom() {
+        val utf8MacNoBomEncoding = FileUtils.detectFileEncoding("src/test/resources/testfile_utf8_mac_no_bom.txt", classLoader)
+        assertEquals("UTF-8", utf8MacNoBomEncoding)
+    }
+
+    /**
+     * Tests detecting the encoding of a UTF-8 file with BOM (Windows).
+     */
+    @Test
+    fun testDetectFileEncodingUtf8WindowsBom() {
+        val utf8WindowsBomEncoding = FileUtils.detectFileEncoding("src/test/resources/testfile_utf8_windows_bom.txt", classLoader)
+        assertEquals("UTF-8", utf8WindowsBomEncoding)
+    }
+
+    /**
+     * Tests detecting the encoding of a UTF-8 file without BOM (Windows).
+     */
+    @Test
+    fun testDetectFileEncodingUtf8WindowsNoBom() {
+        val utf8WindowsNoBomEncoding = FileUtils.detectFileEncoding("src/test/resources/testfile_utf8_windows_no_bom.txt", classLoader)
+        assertEquals("UTF-8", utf8WindowsNoBomEncoding)
+    }
+
+    @Test
+    fun testDetectFileEncodingWindows1252Explicitly() {
+        // Überspringe die automatische Erkennung und erlaube nur explizite Deklaration
+        val expectedEncoding = "windows-1252"
+
+        // Lies die Datei mit der explizit festgelegten Codierung
+        val content = FileUtils.readEntireTextFile("src/test/resources/testfile_windows-1252.txt", Charset.forName(expectedEncoding), classLoader)
+
+        // Stelle sicher, dass der Text korrekt gelesen wurde
+        assertTrue(content.contains("Höheres Leben"))
+
+        // Debug-Ausgabe zur Bestätigung
+        println("Windows-1252 file content: $content")
+    }
+
+    @Test
+    fun testDetectFileEncodingWithFilePath() {
+        // Test UTF-8 with BOM (Unix) by file path
+        val utf8UnixBomEncoding = FileUtils.detectFileEncoding("src/test/resources/testfile_utf8_unix_bom.txt", classLoader)
+        assertEquals("UTF-8", utf8UnixBomEncoding)
     }
 }

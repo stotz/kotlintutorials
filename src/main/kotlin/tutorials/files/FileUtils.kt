@@ -1,8 +1,10 @@
 package tutorials.files
 
+import org.mozilla.universalchardet.UniversalDetector
 import java.io.File
 import java.io.FileNotFoundException
 import java.nio.charset.Charset
+import java.nio.file.Files
 
 object FileUtils {
 
@@ -92,10 +94,36 @@ object FileUtils {
 
     /**
      * Detects the file encoding using juniversalchardet.
+     *
+     * @param filePath The file path to detect encoding.
+     * @param classLoader The class loader to use to resolve file paths, if necessary.
+     * @return The detected file encoding as a string, or "UTF-8" if the encoding couldn't be detected.
      */
     fun detectFileEncoding(filePath: String, classLoader: ClassLoader?): String {
-        // This is a placeholder for the actual encoding detection logic using juniversalchardet
         val file = resolveFilePath(filePath, classLoader)
-        return "UTF-8"  // Default to UTF-8 in this example
+
+        // Create a UniversalDetector instance
+        val detector = UniversalDetector(null)
+
+        // Read the file and feed the data to the detector
+        Files.newInputStream(file.toPath()).use { inputStream ->
+            val buffer = ByteArray(4096)
+            var nread: Int
+            while (inputStream.read(buffer).also { nread = it } > 0 && !detector.isDone) {
+                detector.handleData(buffer, 0, nread)
+            }
+        }
+
+        // Signal to the detector that we are done reading
+        detector.dataEnd()
+
+        // Get the detected encoding
+        val encoding = detector.detectedCharset
+
+        // Reset detector for potential reuse
+        detector.reset()
+
+        // Return the detected encoding, or default to UTF-8 if none was detected
+        return encoding ?: "UTF-8"
     }
 }
