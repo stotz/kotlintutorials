@@ -29,8 +29,6 @@ Kotlin's null safety features ensure that we handle potential `null` values in a
 Here is the Kotlin code used to demonstrate resource handling, including all the best practices mentioned:
 
 ```kotlin
-package tutorials.files
-
 import java.io.IOException
 
 fun main() {
