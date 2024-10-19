@@ -11,6 +11,9 @@ This tutorial covers bitwise operations in Kotlin, including practical examples 
 ### 2. [Input Handling with `readln()` and Java's `Scanner`](ReadmeReadlnAndScanner.md)
 This tutorial demonstrates how to handle input in Kotlin using `readln()` and Java's `Scanner`. It includes examples of input validation, exception handling, and advanced usage scenarios.
 
+### 3. [Dependency Injection](ReadmeDependencyInjection.md)
+This tutorial demonstrates Dependency Injection (Constructor Injection, Property (Setter) Injection, Method Injection, Field Injection, Service Locator Pattern, Scoped Injection and Lazy Injection).
+
 ## How to Use
 Each tutorial is self-contained and includes detailed explanations and examples. Feel free to explore the tutorials by clicking on the links above!
 
