@@ -1,0 +1,38 @@
+// Filename: Main.kt
+package tutorials.dependencyinjection
+
+// Main Program to demonstrate Dependency Injection examples
+/**
+ * Main function to run and demonstrate different types of Dependency Injection in Kotlin.
+ */
+fun main() {
+    println("--- Constructor Injection Example ---")
+    val constructorInjectedService = ConstructorInjectedService(Dependency())
+    constructorInjectedService.performAction()
+
+    println("\n--- Setter Injection Example ---")
+    val setterInjectedService = SetterInjectedService()
+    setterInjectedService.setDependency(Dependency())
+    setterInjectedService.performAction()
+
+    println("\n--- Method Injection Example ---")
+    val methodInjectedService = MethodInjectedService()
+    methodInjectedService.performAction(Dependency())
+
+    println("\n--- Field Injection Example ---")
+    val fieldInjectedService = FieldInjectedService()
+    fieldInjectedService.dependency = Dependency()
+    fieldInjectedService.performAction()
+
+    println("\n--- Service Locator Example ---")
+    val serviceLocatorInjectedService = ServiceLocatorInjectedService()
+    serviceLocatorInjectedService.performAction()
+
+    println("\n--- Scoped Injection Example ---")
+    val scopedInjectedService = ScopedInjectedService()
+    scopedInjectedService.performAction(Dependency())
+
+    println("\n--- Lazy Injection Example ---")
+    val lazyInjectedService = LazyInjectedService()
+    lazyInjectedService.performAction()
+}
