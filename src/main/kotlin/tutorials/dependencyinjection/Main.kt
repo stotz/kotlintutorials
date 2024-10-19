@@ -4,22 +4,26 @@ package tutorials.dependencyinjection
  * Main function to run and demonstrate different types of Dependency Injection in Kotlin.
  */
 fun main() {
-    println("--- Constructor Injection Example ---")
-    val constructorInjectedService = ConstructorInjectedService(Dependency())
-    constructorInjectedService.performAction()
+    println("--- Constructor Injection Example with DependencyA ---")
+    val constructorInjectedServiceA = ConstructorInjectedService(DependencyA())
+    constructorInjectedServiceA.performAction()
+
+    println("\n--- Constructor Injection Example with DependencyB ---")
+    val constructorInjectedServiceB = ConstructorInjectedService(DependencyB())
+    constructorInjectedServiceB.performAction()
 
     println("\n--- Setter Injection Example ---")
     val setterInjectedService = SetterInjectedService()
-    setterInjectedService.setDependency(Dependency())
+    setterInjectedService.setDependency(DependencyA())
     setterInjectedService.performAction()
 
     println("\n--- Method Injection Example ---")
     val methodInjectedService = MethodInjectedService()
-    methodInjectedService.performAction(Dependency())
+    methodInjectedService.performAction(DependencyB())
 
     println("\n--- Field Injection Example ---")
     val fieldInjectedService = FieldInjectedService()
-    fieldInjectedService.dependency = Dependency()
+    fieldInjectedService.dependency = DependencyA()
     fieldInjectedService.performAction()
 
     println("\n--- Service Locator Example ---")
@@ -28,7 +32,7 @@ fun main() {
 
     println("\n--- Scoped Injection Example ---")
     val scopedInjectedService = ScopedInjectedService()
-    scopedInjectedService.performAction(Dependency())
+    scopedInjectedService.performAction(DependencyB())
 
     println("\n--- Lazy Injection Example ---")
     val lazyInjectedService = LazyInjectedService()
