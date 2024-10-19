@@ -1,6 +1,5 @@
 package tutorials.dependencyinjection
 
-// Filename: ConstructorInjectedService.kt
 // Constructor Injection Example
 /**
  * Example demonstrating Constructor Injection in Kotlin.

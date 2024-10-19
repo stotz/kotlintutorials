@@ -1,6 +1,5 @@
 package tutorials.dependencyinjection
 
-// Filename: ServiceLocatorInjectedService.kt
 // Service Locator Example
 /**
  * Example demonstrating the use of a Service Locator pattern in Kotlin.

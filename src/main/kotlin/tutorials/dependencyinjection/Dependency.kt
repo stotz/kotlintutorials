@@ -1,6 +1,5 @@
 package tutorials.dependencyinjection
 
-// Filename: Dependency.kt
 // Dependency Class
 /**
  * A simple class representing a dependency.

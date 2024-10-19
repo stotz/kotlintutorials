@@ -1,6 +1,5 @@
 package tutorials.dependencyinjection
 
-// Filename: MethodInjectedService.kt
 // Method Injection Example
 /**
  * Example demonstrating Method Injection in Kotlin.

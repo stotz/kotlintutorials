@@ -1,6 +1,5 @@
 package tutorials.dependencyinjection
 
-// Filename: SetterInjectedService.kt
 // Property Injection (Setter) Example
 /**
  * Example demonstrating Property (Setter) Injection in Kotlin.

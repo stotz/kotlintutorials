@@ -1,6 +1,5 @@
 package tutorials.dependencyinjection
 
-// Filename: FieldInjectedService.kt
 // Field Injection Example
 /**
  * Example demonstrating Field Injection in Kotlin using a public property.

@@ -1,6 +1,5 @@
 package tutorials.dependencyinjection
 
-// Filename: LazyInjectedService.kt
 // Lazy Injection Example
 /**
  * Example demonstrating Lazy Injection in Kotlin.

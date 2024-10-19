@@ -1,6 +1,5 @@
 package tutorials.dependencyinjection
 
-// Filename: ScopedInjectedService.kt
 // Scoped Injection Example
 /**
  * Example demonstrating Scoped Injection in Kotlin.
