@@ -4,6 +4,11 @@ Dependency Injection (DI) is a design pattern that helps in achieving Inversion 
 
 ## Types of Dependency Injection
 
+### the Class Dependency
+The dependency class used in these examples.
+
+**Example:** [Dependency.kt](src/main/kotlin/tutorials/dependencyinjection/Dependency.kt)
+
 ### 1. Constructor Injection
 Constructor Injection is the recommended method when dependencies are mandatory and should be provided during object creation. It ensures the object is in a valid state once constructed.
 
