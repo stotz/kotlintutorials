@@ -1,7 +1,5 @@
-// Filename: Main.kt
 package tutorials.dependencyinjection
 
-// Main Program to demonstrate Dependency Injection examples
 /**
  * Main function to run and demonstrate different types of Dependency Injection in Kotlin.
  */

@@ -2,12 +2,13 @@
 
 Dependency Injection (DI) is a design pattern that helps in achieving Inversion of Control (IoC) by injecting dependencies into a class instead of the class creating them itself. This leads to more testable, maintainable, and flexible code.
 
-## Types of Dependency Injection
-
 ### the Class Dependency
 The dependency class used in these examples.
 
 **Example:** [Dependency.kt](src/main/kotlin/tutorials/dependencyinjection/Dependency.kt)
+and [DependencyInterface.kt](src/main/kotlin/tutorials/dependencyinjection/DependencyInterface.kt)
+
+## Types of Dependency Injection
 
 ### 1. Constructor Injection
 Constructor Injection is the recommended method when dependencies are mandatory and should be provided during object creation. It ensures the object is in a valid state once constructed.
@@ -115,6 +116,13 @@ Lazy Injection is used to create dependencies only when they are actually needed
 
 #### Use Cases:
 - When instantiating a dependency is expensive, and it is not always needed.
+
+## Dependency Interface and Class
+All the examples in this tutorial use the following `DependencyInterface` and `Dependency` class:
+
+**Example Interface:** [DependencyInterface.kt](src/main/kotlin/tutorials/dependencyinjection/DependencyInterface.kt)
+
+**Example Class:** [Dependency.kt](src/main/kotlin/tutorials/dependencyinjection/Dependency.kt)
 
 ## Conclusion
 Dependency Injection is a powerful pattern for creating testable and maintainable code. By using Constructor, Property, Method, or Lazy Injection, you can manage your application's dependencies in a clear and flexible way. Each type of DI has its specific advantages, disadvantages, and use cases, which should be carefully considered when designing your system.

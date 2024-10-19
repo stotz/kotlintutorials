@@ -7,7 +7,7 @@ package tutorials.dependencyinjection
  * Lazy Injection is used to instantiate dependencies only when needed, optimizing resource usage.
  */
 class LazyInjectedService {
-    private val dependency: Dependency by lazy { Dependency() }
+    private val dependency: DependencyInterface by lazy { Dependency() }
 
     /**
      * Performs an action using the lazily initialized dependency.

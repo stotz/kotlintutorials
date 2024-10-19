@@ -8,7 +8,7 @@ package tutorials.dependencyinjection
  * but it is generally discouraged in favor of pure dependency injection techniques.
  */
 object ServiceLocator {
-    val dependency: Dependency = Dependency()
+    val dependency: DependencyInterface = Dependency()
 }
 
 class ServiceLocatorInjectedService {

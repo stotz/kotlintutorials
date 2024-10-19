@@ -11,7 +11,7 @@ class FieldInjectedService {
     /**
      * Directly injected dependency, publicly visible.
      */
-    var dependency: Dependency? = null
+    var dependency: DependencyInterface? = null
 
     /**
      * Performs an action if the dependency is set.

@@ -12,7 +12,7 @@ class MethodInjectedService {
      * Performs an action using the provided dependency.
      * @param dependency the dependency needed to perform the action
      */
-    fun performAction(dependency: Dependency) {
+    fun performAction(dependency: DependencyInterface) {
         dependency.doSomething()
     }
 }

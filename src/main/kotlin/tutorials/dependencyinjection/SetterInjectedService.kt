@@ -1,6 +1,6 @@
 package tutorials.dependencyinjection
 
-// Property Injection (Setter) Example
+// Property Injection (Setter Injection) Example
 /**
  * Example demonstrating Property (Setter) Injection in Kotlin.
  *
@@ -9,13 +9,13 @@ package tutorials.dependencyinjection
  * be in an invalid state if the dependency is not set properly.
  */
 class SetterInjectedService {
-    lateinit var dependency: Dependency
+    lateinit var dependency: DependencyInterface
 
     /**
      * Sets the dependency for this service.
      * @param dep the dependency to be set
      */
-    fun setDependency(dep: Dependency) {
+    fun setDependency(dep: DependencyInterface) {
         this.dependency = dep
     }
 

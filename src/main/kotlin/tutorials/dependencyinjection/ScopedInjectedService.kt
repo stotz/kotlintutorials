@@ -10,7 +10,7 @@ class ScopedInjectedService {
     /**
      * Dependency instance scoped to a request or other lifecycle scope.
      */
-    fun performAction(dependency: Dependency) {
+    fun performAction(dependency: DependencyInterface) {
         dependency.doSomething()
     }
 }
