@@ -1,9 +1,3 @@
-// README - ReadmeDependencyInjection.md
-// Write a detailed tutorial on Dependency Injection in Kotlin with links to the above examples.
-
-import java.io.File
-
-val readmeContent = """
 # Dependency Injection in Kotlin
 
 Dependency Injection (DI) is a design pattern that helps in achieving Inversion of Control (IoC) by injecting dependencies into a class instead of the class creating them itself. This leads to more testable, maintainable, and flexible code.
