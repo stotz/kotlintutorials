@@ -14,7 +14,7 @@ This tutorial demonstrates how to handle input in Kotlin using `readln()` and Ja
 ### 3. [Dependency Injection](ReadmeDependencyInjection.md)
 This tutorial demonstrates Dependency Injection (Constructor Injection, Property (Setter) Injection, Method Injection, Field Injection, Service Locator Pattern, Scoped Injection and Lazy Injection).
 
-### 4. [Gruppierung von Listen und Maps](Gruppierung von Listen und Maps.md)
+### 4. [Gruppierung von Listen und Maps](GruppierungVonListenUndMaps.md)
 Kotlin-Tutorial: Gruppierung von Listen und Maps
 
 ## How to Use
